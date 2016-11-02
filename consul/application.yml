@@ -1,0 +1,20 @@
+spring:
+   profiles.active: default
+---
+spring:
+  cloud:
+     consul:
+       host: localhost
+       port: 8500
+---
+spring:
+   profiles: docker
+   consul:
+      host: ${CONSUL_SERVER_ADDRESS}
+      port: 8500
+      enabled: true
+   cloud:
+     consul:
+       retry:
+         initial-interval: 1000
+         max-attempts: 10
